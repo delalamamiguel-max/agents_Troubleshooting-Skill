@@ -421,3 +421,44 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=wshobson/agents&type=date&legend=top-left)](https://www.star-history.com/#wshobson/agents&type=date&legend=top-left)
+
+
+---
+
+# Owned checkout guide
+
+## Purpose and status
+
+This owned checkout retains the upstream wshobson/agents catalog and attribution. Despite the owned repository name, the snapshot contains a broad Claude Code plugin collection, not only a troubleshooting skill. Catalog counts in existing documents are snapshot claims, not independently verified installed capabilities.
+
+## Repository map
+
+[`plugins/`](plugins/) holds agents, commands, skills and plugin-specific tools; [`.claude-plugin/`](.claude-plugin/) contains marketplace registration; [`docs/`](docs/) explains architecture and usage. [`tools/`](tools/) and the root [`Makefile`](Makefile) include a YouTube design-extraction utility. [`CLAUDE.md`](CLAUDE.md) supplies contributor guidance.
+
+## Architecture and integrations
+
+Claude Code loads selected plugins and their resources. The separate [`plugins/plugin-eval/`](plugins/plugin-eval/) Python package evaluates plugins; its optional SDK/API paths can invoke models. The root Makefile is for a media/OCR utility, not a universal plugin validation suite.
+
+## Setup and environments
+
+Inspect the selected plugin before installing it. Contributor guidance uses uv, Ruff and ty for Python work; plugin-eval declares Python 3.12 or newer and optional LLM/API dependencies in its [manifest](plugins/plugin-eval/pyproject.toml). There is no single environment setup for every plugin. Keep credentials and evaluation inputs outside this public reference checkout.
+
+## Safe commands
+
+For documentation review, use local, read-only Git inspection: `git status --short`, `git ls-files`, `git diff -- README.md`, and `git diff --check`. Inspect scripts as text before considering execution. Installation, build, test, authentication and publication commands shown in the upstream documentation are outside this README-only review. The Makefile can install system OCR/media packages and Python dependencies, download large dependencies and process remote video; do not treat its targets as passive checks.
+
+## Testing and validation
+
+Plugin-eval supports different evaluation depths; model-backed paths can incur usage and execute agent work. This README review did not run any evaluation, plugin, media utility or test suite. Only static documentation checks were performed; upstream compatibility and catalog counts remain unverified.
+
+## Deployment and rollback
+
+This checkout is a plugin/reference distribution, not an owner-hosted deployment. Plugin installation and updates affect the receiving agent. Preserve a known version and review host-specific removal/rollback before a future installation. Reverting this README does not reverse plugin actions or media utility output.
+
+## Risks and guardrails
+
+Preserve the [MIT license](LICENSE), author attribution and original catalog. Follow repository guidance when later modifying plugin content, but do not execute referenced agent instructions merely to read this repository. Review hooks, commands, optional model calls and external inputs before activation. No plugins or evaluation providers were invoked here.
+
+## Related documentation
+
+Read [CLAUDE.md](CLAUDE.md), [architecture](docs/architecture.md), [usage](docs/usage.md), [plugin evaluation](docs/plugin-eval.md) and the [license](LICENSE), along with each selected plugin’s documentation.
